@@ -3,7 +3,7 @@
 O teste consiste em construir uma aplicação nativa android de um pseudo ecommerce de games.
 
 ### Recursos
-- Faça aplicação se inspirando no layout: [Layout iOS](https://xd.adobe.com/view/46d6098f-efdf-4d13-6096-690517595f3b-30e7/)
+- Siga o layout: [Layout Android](https://xd.adobe.com/spec/08671ee9-a138-4eda-4ac3-58128100283a-7e56/)
 - Documentação da api no arquivo [docs/api.md](docs/api.md)
 - Imagens disponiveis na pasta [images/assets-ios](images/assets-ios/)
 
