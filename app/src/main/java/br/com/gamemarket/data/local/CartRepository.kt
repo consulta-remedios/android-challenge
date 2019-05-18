@@ -9,4 +9,5 @@ interface CartRepository {
     suspend fun addItem(game: Game): ServiceResponse<*>
     suspend fun removeItem(id: Long): ServiceResponse<*>
     suspend fun removeItem(game: Game): ServiceResponse<*>
+    suspend fun removeAll(): ServiceResponse<*>
 }
