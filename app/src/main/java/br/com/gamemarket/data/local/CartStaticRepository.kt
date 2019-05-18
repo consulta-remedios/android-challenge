@@ -7,6 +7,7 @@ import br.com.gamemarket.data.model.ServiceResponse
 private val cart = mutableListOf<ItemCart>()
 
 class CartStaticRepository : CartRepository {
+
     override suspend fun getCart(): ServiceResponse<List<ItemCart>> {
         return ServiceResponse.BODY(cart)
     }
@@ -39,6 +40,12 @@ class CartStaticRepository : CartRepository {
 
     override suspend fun removeItem(game: Game): ServiceResponse<*> {
         return removeItem(game.id)
+    }
+
+    override suspend fun removeAll(): ServiceResponse<*> {
+        cart.clear()
+
+        return ServiceResponse.OK
     }
 
     private fun List<ItemCart>.getItemIfExists(id: Long): ItemCart? {
