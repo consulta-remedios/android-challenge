@@ -1,4 +1,4 @@
-package com.consultaremedios.base.extensions
+package br.com.gamemarket.base.extensions
 
 import android.view.View
 import android.widget.ImageView
@@ -25,8 +25,4 @@ fun ImageView.loadImage(imageUrl: String, circle: Boolean = false, errorPlacehol
         .load(imageUrl)
         .apply(requestOptions)
         .into(this)
-}
-
-fun ImageView.loadImage(@DrawableRes res: Int) {
-    this.setImageResource(res)
 }
