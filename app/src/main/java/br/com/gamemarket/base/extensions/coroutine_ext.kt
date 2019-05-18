@@ -1,4 +1,5 @@
-package com.consultaremedios.base.extensions
+package br.com.gamemarket.base.extensions
+
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope

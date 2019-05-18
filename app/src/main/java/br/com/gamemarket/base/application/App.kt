@@ -4,6 +4,8 @@ import android.app.Application
 import br.com.gamemarket.base.di.appModule
 import br.com.gamemarket.base.di.dispatcherModule
 import br.com.gamemarket.base.di.featureModule
+import br.com.gamemarket.base.di.repositoryModule
+import br.com.gamemarket.base.di.retrofitClientModule
 import org.koin.android.ext.android.startKoin
 
 @Suppress("unused")
@@ -12,7 +14,9 @@ class App : Application() {
     private val modules = listOf(
         appModule,
         featureModule,
-        dispatcherModule
+        dispatcherModule,
+        retrofitClientModule,
+        repositoryModule
     )
 
     override fun onCreate() {
@@ -21,3 +25,4 @@ class App : Application() {
         startKoin(this, modules)
     }
 }
+

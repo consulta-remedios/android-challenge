@@ -1,4 +1,4 @@
-package br.com.gamemarket.data
+package br.com.gamemarket.data.model
 
 sealed class ServiceResponse<out T> {
     object OK : ServiceResponse<Nothing>()
@@ -7,13 +7,11 @@ sealed class ServiceResponse<out T> {
 }
 
 fun <T : Any, R : Any> ServiceResponse<T>.convert(function: (T) -> R) = when (this) {
-    is ServiceResponse.BODY -> ServiceResponse.BODY(function(this.value))
+    is ServiceResponse.BODY -> ServiceResponse.BODY(
+        function(this.value)
+    )
     is ServiceResponse.OK -> this
     is ServiceResponse.ERROR -> this
-}
-
-fun <T : Any, R : Any> ServiceResponse<List<T>>.convertList(function: (T) -> R): ServiceResponse<List<R>> {
-    return this.convert { it.map(function) }
 }
 
 fun <T> ServiceResponse<T>.whenever(
