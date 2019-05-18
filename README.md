@@ -5,7 +5,7 @@ O teste consiste em construir uma aplicação nativa android de um pseudo ecomme
 ### Recursos
 - Siga o layout: [Layout Android](https://xd.adobe.com/spec/08671ee9-a138-4eda-4ac3-58128100283a-7e56/)
 - Documentação da api no arquivo [docs/api.md](docs/api.md)
-- Imagens disponiveis na pasta [images/assets-ios](images/assets-ios/)
+- Imagens disponiveis na pasta [images/assets-android](images/assets-android/)
 
 ### Escopo
 - A lista de jogos deve ser carregada automaticamente ao entrar no aplicativo, jogos devem vir da API
@@ -28,6 +28,9 @@ Faça um pull request para este repositório com o código a ser avaliado
 
 ##### Recomendações
 * Crie um código escalável
+* Siga a arquitetura proposta, a menos que traga um ganho considerável
 * Versione como se estivesse trabalhando em equipe
 * Descreva em um `README.md` o que você fez de interessante, a arquitetura que usou, lista de bibliotecas que usou e as dificuldades encontradas no desenvolvimento da aplicação(Se não consegui terminar em tempo hábil, aproveite este espaço para fazer um checklist do que está faltando)
 * Preze pela qualidade, se faltar tempo para terminar o teste, faça uma lista de pendências
+
+Estou aguardando o teu pull request, boa sorte!
