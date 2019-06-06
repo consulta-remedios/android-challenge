@@ -8,6 +8,7 @@ O teste consiste em construir uma aplicação nativa android de um pseudo ecomme
 - Imagens disponiveis na pasta [images/assets-android](images/assets-android/)
 
 ### Escopo
+- Faça um fork deste repositório e faça as alterações no projeto já iniciado
 - A lista de jogos deve ser carregada automaticamente ao entrar no aplicativo, jogos devem vir da API
 - Ao clicar em algum item da lista, ir para tela de detalhes
 - O carrinho de compra deve exibir todos os itens adicionados.
@@ -16,6 +17,7 @@ O teste consiste em construir uma aplicação nativa android de um pseudo ecomme
 
 ### O que iremos avaliar...
 - Funcionamento do aplicativo(ele não pode quebrar)
+- Como você trabalhou em um projeto que já esta em andamento, se manteve a arquitetura, as melhorias propostas e como implementou novas funcionalidades
 - Layout(Usabilidade e se fez conforme escopo)
 - O Código(Domínio da linguagem, estrutura, uso de boas práticas, Legibilidade e Lint)
 - Uso do git e github(iremos olhar os commits; branches; pull request. Recomendado uso do gitflow)
