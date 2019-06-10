@@ -2,10 +2,8 @@ package br.com.gamemarket.feature.main
 
 import android.os.Bundle
 import android.text.Html
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.recyclerview.widget.GridLayoutManager
 import br.com.gamemarket.R
 import br.com.gamemarket.base.extensions.isVisible
 import br.com.gamemarket.base.extensions.showToast
