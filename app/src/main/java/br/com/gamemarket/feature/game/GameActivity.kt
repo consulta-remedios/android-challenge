@@ -3,6 +3,7 @@ package br.com.gamemarket.feature.game
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import br.com.gamemarket.R
@@ -40,6 +41,15 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         presenter.loadGames(gameId)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> finish()
+            else -> super.onOptionsItemSelected(item)
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun setupViews() {
         setSupportActionBar(gameToolbar as Toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -47,7 +57,8 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     }
 
     override fun onSuccessfulLoadGame(game: Game) {
-        gameToolbar.tcTxtTitle.text = game.platform
+        gameToolbar.tcTxtTitle.text = game.platform.toUpperCase()
+        gameToolbar.tcTxtTitle.setTextColor(resources.getColor(R.color.colorAccent))
 
         gameTxtName.text = game.name
         gameTxtDescription.text = game.description
