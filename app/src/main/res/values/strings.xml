@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">GameMarket</string>
 
-    <string name="main_title">Games</string>
+    <string name="main_title">
+        <![CDATA[<font color=#2F7CF6>Games</font><font color=#333333>.</font>]]>
+    </string>
     <string name="game_title">Game</string>
 
     <string name="main_button_add_game">Adicionar Item</string>
