@@ -1,6 +1,6 @@
 package br.com.gamemarket.base.extensions
 
-// TODO fix format
 fun Number.toCurrency() : String{
-    return "$: $this"
+    val value = this.toString().replace('.', ',')
+    return "R$ $value"
 }
