@@ -1,6 +1,7 @@
 package br.com.gamemarket.feature.main
 
 import android.os.Bundle
+import android.text.Html
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -35,12 +36,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         presenter.loadCart()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?) = when (item?.itemId) {
-        android.R.id.home -> {
-            finish()
-            true
-        }
-        else -> super.onOptionsItemSelected(item)
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onSuccessfulLoadGames(games: List<Game>) {
@@ -67,8 +64,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     private fun setupViews() {
         setSupportActionBar(mainToolbar as Toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        mainToolbar.tcTxtTitle.setText(R.string.main_title)
+        mainToolbar.tcTxtTitle.text = Html.fromHtml(getString(R.string.main_title))
 
         mainRecGames.layoutManager = LinearLayoutManager(this)
         mainRecGames.adapter = adapter
