@@ -1,6 +1,7 @@
 package br.com.gamemarket.feature.main
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.text.Html
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -22,22 +23,36 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     private val adapter by lazy { GameAdapter() }
 
+    private var mGames: List<Game> = emptyList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        if (savedInstanceState != null) {
+            mGames = savedInstanceState.getParcelableArrayList("game_list_state")
+            adapter.data = mGames
+            hideLoadingGames()
+        } else {
+            presenter.loadGames()
+        }
+
         setupViews()
-        presenter.loadGames()
     }
 
     override fun onResume() {
         super.onResume()
-
         presenter.loadCart()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putParcelableArrayList("game_list_state", ArrayList(mGames))
+        super.onSaveInstanceState(outState)
+    }
+
     override fun onSuccessfulLoadGames(games: List<Game>) {
-        adapter.data = games
+        mGames = games
+        adapter.data = mGames
     }
 
     override fun showLoadingGames() {

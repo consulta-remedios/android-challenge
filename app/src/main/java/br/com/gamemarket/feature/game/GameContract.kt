@@ -9,6 +9,7 @@ interface GameContract {
         fun showLoadingGames()
         fun hideLoadingGames()
         fun onSuccessfulLoadGame(game: Game)
+        fun onUnsuccessfulLoadGame(message: String)
     }
 
     interface Presenter : BasePresenter<View> {

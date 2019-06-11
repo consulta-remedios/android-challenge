@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import br.com.gamemarket.R
@@ -17,6 +18,7 @@ import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
 class GameActivity : AppCompatActivity(), GameContract.View {
+
     override val presenter by inject<GameContract.Presenter> { parametersOf(this) }
 
     private val gameId by extra(EXTRA_GAME_ID, 0L)
@@ -63,6 +65,10 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         gameTxtName.text = game.name
         gameTxtDescription.text = game.description
         gameTxtPrice.text = game.price.toCurrency()
+    }
+
+    override fun onUnsuccessfulLoadGame(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     override fun showLoadingGames() {

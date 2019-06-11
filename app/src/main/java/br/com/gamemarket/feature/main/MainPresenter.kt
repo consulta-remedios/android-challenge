@@ -3,7 +3,7 @@ package br.com.gamemarket.feature.main
 import br.com.gamemarket.base.extensions.launch
 import br.com.gamemarket.data.local.CartRepository
 import br.com.gamemarket.data.model.Game
-import br.com.gamemarket.data.model.dto.SimpleGameDto
+import br.com.gamemarket.data.model.GameDto
 import br.com.gamemarket.data.model.whenever
 import br.com.gamemarket.data.remote.gamecheckout.GameRepository
 import kotlinx.coroutines.CoroutineDispatcher
@@ -60,11 +60,11 @@ class MainPresenter(
         )
     }
 
-    private fun List<SimpleGameDto>.toGames(): List<Game> {
+    private fun List<GameDto>.toGames(): List<Game> {
         return this.map { it.toGame() }
     }
 
-    private fun SimpleGameDto.toGame(): Game {
+    private fun GameDto.toGame(): Game {
         return Game(
             id,
             name,

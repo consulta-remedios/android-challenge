@@ -4,7 +4,7 @@ import br.com.gamemarket.base.extensions.launch
 import br.com.gamemarket.data.model.Game
 import br.com.gamemarket.data.model.whenever
 import br.com.gamemarket.data.remote.gamecheckout.GameRepository
-import br.com.ideliver.model.GameDto
+import br.com.gamemarket.data.model.GameDto
 import kotlinx.coroutines.CoroutineDispatcher
 
 class GamePresenter(
@@ -22,9 +22,9 @@ class GamePresenter(
                     view.hideLoadingGames()
                     view.onSuccessfulLoadGame(gameDto.toMockGame())
                 },
-                isError = {
+                isError = {message ->
                     view.hideLoadingGames()
-                    // TODO implements
+                    view.onUnsuccessfulLoadGame(message)
                 }
             )
         }
