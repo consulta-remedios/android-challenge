@@ -14,4 +14,6 @@
     <string name="item_game_plus">+</string>
     <string name="label_read_more">Ler Mais</string>
     <string name="label_read_less">Ler Menos</string>
+    <string name="label_frete">Frete:</string>
+    <string name="bt_add_cart">Adicionar ao Carrinho</string>
 </resources>

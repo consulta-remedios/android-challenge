@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#E0E0E0</color>
     <color name="colorAccent">#2F7CF6</color>
     <color name="colorTranslucidOverlay">#33000000</color>
+    <color name="colorTextAddCard">#666666</color>
 
     <color name="colorText">#333333</color>
     <color name="colorTextTitle">#333333</color>

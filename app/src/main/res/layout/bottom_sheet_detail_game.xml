@@ -1,22 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
         android:background="@color/colorPrimary"
         android:layout_height="80dp"
         app:behavior_hideable="false"
         app:behavior_peekHeight="80dp"
-        android:elevation="4dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        tools:targetApi="lollipop">
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:text="Isso é um teste"
-            android:textColor="@android:color/white" />
 
-</androidx.cardview.widget.CardView>
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPrice"
+            tools:text="R$ 100,00"
+            android:textColor="@color/colorAccent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLabelFrete"
+            android:text="@string/label_frete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp"
+            android:drawableStart="@drawable/ic_delivery"
+            android:drawablePadding="8dp"
+            android:textColor="@color/colorCartAccent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            tools:text="R$ 100,00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvFreteValue"
+            android:textColor="@color/colorTextAddCard"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvLabelFrete"
+            app:layout_constraintStart_toEndOf="@+id/tvLabelFrete"
+            android:layout_marginStart="4dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btAddCart"
+            android:background="@drawable/bottom_cart_background"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/bt_add_cart"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
