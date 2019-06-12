@@ -12,4 +12,6 @@
 
     <string name="item_game_minus">-</string>
     <string name="item_game_plus">+</string>
+    <string name="label_read_more">Ler Mais</string>
+    <string name="label_read_less">Ler Menos</string>
 </resources>
