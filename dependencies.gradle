@@ -28,7 +28,7 @@ ext {
             compileSdkVersion   : 28,
             targetSdkVersion    : 28,
             applicationId       : "br.com.gamemarket",
-            versionCode         : 3,
-            versionName         : "1.2"
+            versionCode         : 4,
+            versionName         : "1.3"
     ]
 }
