@@ -2,7 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/bsContainerGame"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
         android:background="@color/colorPrimary"
         android:layout_height="80dp"
         app:behavior_hideable="false"
@@ -11,7 +14,7 @@
 
 
     <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvPrice"
+            android:id="@+id/gameTxtPrice"
             tools:text="R$ 100,00"
             android:textColor="@color/colorAccent"
             android:layout_width="wrap_content"
@@ -35,23 +38,23 @@
             android:drawableStart="@drawable/ic_delivery"
             android:drawablePadding="8dp"
             android:textColor="@color/colorCartAccent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+            app:layout_constraintTop_toBottomOf="@+id/gameTxtPrice"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="16dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-            tools:text="R$ 100,00"
+            android:id="@+id/tvFreteValue"
+            android:text="@string/value_frete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvFreteValue"
             android:textColor="@color/colorTextAddCard"
+            android:layout_marginStart="4dp"
             android:textSize="16sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/tvLabelFrete"
-            app:layout_constraintStart_toEndOf="@+id/tvLabelFrete"
-            android:layout_marginStart="4dp"/>
+            app:layout_constraintStart_toEndOf="@+id/tvLabelFrete"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/btAddCart"
+            android:id="@+id/tvAddCart"
             android:background="@drawable/bottom_cart_background"
             android:textColor="@color/colorPrimary"
             android:text="@string/bt_add_cart"

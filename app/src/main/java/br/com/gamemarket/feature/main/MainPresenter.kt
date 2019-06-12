@@ -26,7 +26,7 @@ class MainPresenter(
                 },
                 isError = { msg ->
                     view.hideLoadingGames()
-                    view.onFailuereLoadGames(msg)
+                    view.onFailureLoadGames(msg)
                 }
             )
         }
@@ -34,20 +34,6 @@ class MainPresenter(
 
     override fun loadCart() {
         dispatcherContext.launch {
-            refreshCartItemCount()
-        }
-    }
-
-    override fun addItemCard(item: Game) {
-        dispatcherContext.launch {
-            localRepository.addItem(item)
-            refreshCartItemCount()
-        }
-    }
-
-    override fun removeItemCard(item: Game) {
-        dispatcherContext.launch {
-            localRepository.removeItem(item)
             refreshCartItemCount()
         }
     }

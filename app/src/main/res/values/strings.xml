@@ -10,10 +10,9 @@
     <string name="main_button_remove_game">Remover Item</string>
     <string name="main_button_go_to_next_page">Abrir segunda tela</string>
 
-    <string name="item_game_minus">-</string>
-    <string name="item_game_plus">+</string>
     <string name="label_read_more">Ler Mais</string>
     <string name="label_read_less">Ler Menos</string>
     <string name="label_frete">Frete:</string>
     <string name="bt_add_cart">Adicionar ao Carrinho</string>
+    <string name="value_frete">R$ 10,00</string>
 </resources>

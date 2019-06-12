@@ -25,6 +25,7 @@ val appModule = module {
         GamePresenter(
             view = view,
             gameRepository = get(),
+            localRepository = get(),
             dispatcherContext = get()
         )
     } bind GameContract.Presenter::class

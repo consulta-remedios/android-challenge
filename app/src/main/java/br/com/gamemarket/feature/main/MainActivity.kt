@@ -1,7 +1,6 @@
 package br.com.gamemarket.feature.main
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.text.Html
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -21,7 +20,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 class MainActivity : AppCompatActivity(), MainContract.View {
     override val presenter by inject<MainContract.Presenter> { parametersOf(this) }
 
-    private val adapter by lazy { GameAdapter() }
+    private val adapter by lazy { MainAdapter() }
 
     private var mGames: List<Game> = emptyList()
 
@@ -69,7 +68,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         mainToolbar.tcTxtCartCount.text = quantity.toString()
     }
 
-    override fun onFailuereLoadGames(message: String) {
+    override fun onFailureLoadGames(message: String) {
         showToast(message)
     }
 
@@ -83,24 +82,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         mainRecGames.layoutManager = staggeredGridLayoutManager
         mainRecGames.adapter = adapter
 
-        adapter.setOnMinusClickListener {
-            onRemoveUnityItemCart(it)
-        }
-
-        adapter.setOnPlusClickListener {
-            onAddUnityItemCart(it)
-        }
-
         adapter.setOnItemClickListener { game ->
             GameActivity.startGameActivity(this, game.id)
         }
-    }
-
-    private fun onRemoveUnityItemCart(item: Game) {
-        presenter.removeItemCard(item)
-    }
-
-    private fun onAddUnityItemCart(item: Game) {
-        presenter.addItemCard(item)
     }
 }

@@ -6,18 +6,21 @@ import android.os.Bundle
 import android.text.Html
 import android.text.method.ScrollingMovementMethod
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import br.com.gamemarket.R
 import br.com.gamemarket.base.extensions.extra
 import br.com.gamemarket.base.extensions.isVisible
+import br.com.gamemarket.base.extensions.toCurrency
 import br.com.gamemarket.data.model.Game
+import br.com.gamemarket.data.model.ItemCart
 import kotlinx.android.synthetic.main.activity_game_content.*
+import kotlinx.android.synthetic.main.bottom_sheet_detail_game.*
 import kotlinx.android.synthetic.main.toolbar_cart.view.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
-
 
 class GameActivity : AppCompatActivity(), GameContract.View {
 
@@ -40,7 +43,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_game_new_new)
+        setContentView(R.layout.activity_game)
 
         setupViews()
         presenter.loadGames(gameId)
@@ -67,20 +70,35 @@ class GameActivity : AppCompatActivity(), GameContract.View {
                 hideDescriptionText()
             }
         }
+
+        tvAddCart.setOnClickListener{
+            onAddUnityItemCart()
+        }
     }
 
     override fun onSuccessfulLoadGame(game: Game) {
         mGame = game
+
         gameToolbar.tcTxtTitle.text = game.platform.toUpperCase()
         gameToolbar.tcTxtTitle.setTextColor(resources.getColor(R.color.colorAccent))
 
+        bsContainerGame.visibility = View.VISIBLE
+        shadow.visibility = View.VISIBLE
+
         gameTxtName.text = game.name
         gameTxtDescription.text = game.description
-//        gameTxtPrice.text = game.price.toCurrency()
+        gameTxtPrice.text = game.price.toCurrency()
     }
 
     override fun onUnsuccessfulLoadGame(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        finish()
+    }
+
+    override fun onChangeCartSize(cart: List<ItemCart>) {
+        val quantity = cart.sumBy { it.quantity }
+        gameToolbar.tcTxtCartCount.isVisible = quantity > 0
+        gameToolbar.tcTxtCartCount.text = quantity.toString()
     }
 
     override fun showLoadingGames() {
@@ -101,6 +119,18 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         tvReadMoreLess.text = resources.getString(R.string.label_read_less)
         gameTxtDescription.maxLines = Integer.MAX_VALUE
         gameTxtDescription.movementMethod = ScrollingMovementMethod()
+    }
+
+    private fun onRemoveUnityItemCart(item: Game) {
+        presenter.removeItemCard(item)
+        Toast.makeText(this, "O jogo ${mGame.name} foi removido do carrinho",
+            Toast.LENGTH_SHORT).show()
+    }
+
+    private fun onAddUnityItemCart() {
+        presenter.addItemCard(mGame)
+        Toast.makeText(this, "O jogo ${mGame.name} foi adicionado no carrinho",
+            Toast.LENGTH_SHORT).show()
     }
 
 }
