@@ -20,24 +20,38 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 class MainActivity : AppCompatActivity(), MainContract.View {
     override val presenter by inject<MainContract.Presenter> { parametersOf(this) }
 
-    private val adapter by lazy { GameAdapter() }
+    private val adapter by lazy { MainAdapter() }
+
+    private var mGames: List<Game> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        if (savedInstanceState != null) {
+            mGames = savedInstanceState.getParcelableArrayList("game_list_state")
+            adapter.data = mGames
+            hideLoadingGames()
+        } else {
+            presenter.loadGames()
+        }
+
         setupViews()
-        presenter.loadGames()
     }
 
     override fun onResume() {
         super.onResume()
-
         presenter.loadCart()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putParcelableArrayList("game_list_state", ArrayList(mGames))
+        super.onSaveInstanceState(outState)
+    }
+
     override fun onSuccessfulLoadGames(games: List<Game>) {
-        adapter.data = games
+        mGames = games
+        adapter.data = mGames
     }
 
     override fun showLoadingGames() {
@@ -54,7 +68,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         mainToolbar.tcTxtCartCount.text = quantity.toString()
     }
 
-    override fun onFailuereLoadGames(message: String) {
+    override fun onFailureLoadGames(message: String) {
         showToast(message)
     }
 
@@ -68,24 +82,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         mainRecGames.layoutManager = staggeredGridLayoutManager
         mainRecGames.adapter = adapter
 
-        adapter.setOnMinusClickListener {
-            onRemoveUnityItemCart(it)
-        }
-
-        adapter.setOnPlusClickListener {
-            onAddUnityItemCart(it)
-        }
-
         adapter.setOnItemClickListener { game ->
             GameActivity.startGameActivity(this, game.id)
         }
-    }
-
-    private fun onRemoveUnityItemCart(item: Game) {
-        presenter.removeItemCard(item)
-    }
-
-    private fun onAddUnityItemCart(item: Game) {
-        presenter.addItemCard(item)
     }
 }
