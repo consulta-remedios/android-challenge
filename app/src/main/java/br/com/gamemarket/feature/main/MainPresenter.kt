@@ -12,13 +12,13 @@ class MainPresenter(
     override var view: MainContract.View,
     private val gameRepository: GameRepository,
     private val localRepository: CartRepository,
-    private val dispacherContext: CoroutineDispatcher
+    private val dispatcherContext: CoroutineDispatcher
 ) : MainContract.Presenter {
 
     override fun loadGames() {
         view.showLoadingGames()
 
-        dispacherContext.launch {
+        dispatcherContext.launch {
             gameRepository.getGames().whenever(
                 isBody = { simpleGameDto ->
                     view.hideLoadingGames()
@@ -33,20 +33,20 @@ class MainPresenter(
     }
 
     override fun loadCart() {
-        dispacherContext.launch {
+        dispatcherContext.launch {
             refreshCartItemCount()
         }
     }
 
     override fun addItemCard(item: Game) {
-        dispacherContext.launch {
+        dispatcherContext.launch {
             localRepository.addItem(item)
             refreshCartItemCount()
         }
     }
 
     override fun removeItemCard(item: Game) {
-        dispacherContext.launch {
+        dispatcherContext.launch {
             localRepository.removeItem(item)
             refreshCartItemCount()
         }

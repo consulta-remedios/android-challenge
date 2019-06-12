@@ -9,13 +9,7 @@ class GameService(private val api: GameApi) : GameRepository {
         return api.getGames().awaitResult()
     }
 
-    // mock service
     override suspend fun getGame(gameId: Long): ServiceResponse<GameDto> {
-
-        return ServiceResponse.BODY(
-            GameDto(
-                gameId
-            )
-        )
+        return api.getGame(gameId).awaitResult()
     }
 }

@@ -10,17 +10,17 @@ import kotlinx.coroutines.CoroutineDispatcher
 class GamePresenter(
     override var view: GameContract.View,
     private val gameRepository: GameRepository,
-    private val dispacherContext: CoroutineDispatcher
+    private val dispatcherContext: CoroutineDispatcher
 ) : GameContract.Presenter {
 
     override fun loadGames(gameId: Long) {
         view.showLoadingGames()
 
-        dispacherContext.launch {
+        dispatcherContext.launch {
             gameRepository.getGame(gameId).whenever(
                 isBody = { gameDto ->
                     view.hideLoadingGames()
-                    view.onSuccessfulLoadGame(gameDto.toMockGame())
+                    view.onSuccessfulLoadGame(gameDto.toGame())
                 },
                 isError = {message ->
                     view.hideLoadingGames()
@@ -30,16 +30,15 @@ class GamePresenter(
         }
     }
 
-    // TODO implements
-    private fun GameDto.toMockGame() : Game {
+    private fun GameDto.toGame(): Game {
         return Game(
             id,
-            "Super Mario Odyssey",
-            "Lorem ipsum dolor sit amet, Super Mario Odyssey, consectetur adipiscing elit",
-            100.0,
-            1,
-            "ps4",
-            "https://raw.githubusercontent.com/ConsultaRemedios/frontend-challenge/master/assets/super-mario-odyssey.png",
+            name,
+            description,
+            price,
+            0,
+            platform,
+            image,
             emptyList()
         )
     }
