@@ -15,7 +15,7 @@ interface CartContract {
 
     interface Presenter : BasePresenter<View> {
         fun loadGames()
-        fun incriaseQuantityGames()
+        fun increaseQuantityGames()
         fun decreaseQuantityGames()
         fun removeItemCard(item: Game)
     }

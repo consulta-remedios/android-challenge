@@ -23,4 +23,5 @@
     <string name="label_mail">Correios:</string>
     <string name="label_payment">Pagamento</string>
     <string name="label_continue_buing">Continuar Comprando</string>
+    <string name="title_cart_activity">Carrinho de compras</string>
 </resources>

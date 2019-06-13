@@ -16,7 +16,7 @@ class CartPresenter(
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun incriaseQuantityGames() {
+    override fun increaseQuantityGames() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

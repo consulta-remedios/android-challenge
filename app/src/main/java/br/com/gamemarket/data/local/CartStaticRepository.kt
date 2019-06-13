@@ -34,7 +34,7 @@ class CartStaticRepository : CartRepository {
 
             ServiceResponse.OK
         } catch (e: Exception) {
-            ServiceResponse.ERROR("")
+            ServiceResponse.ERROR(e.localizedMessage)
         }
     }
 
