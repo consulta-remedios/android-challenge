@@ -2,6 +2,7 @@ package br.com.gamemarket.feature.main
 
 import android.os.Bundle
 import android.text.Html
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import br.com.gamemarket.R
@@ -16,6 +17,7 @@ import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import br.com.gamemarket.feature.cart.CartActivity
 
 class MainActivity : AppCompatActivity(), MainContract.View {
     override val presenter by inject<MainContract.Presenter> { parametersOf(this) }
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     private val adapter by lazy { MainAdapter() }
 
     private var mGames: List<Game> = emptyList()
+    private var mQtdItensCart: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,10 +65,19 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         mainViewLoading.isVisible = false
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> finish()
+            else -> super.onOptionsItemSelected(item)
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onChangeCartSize(cart: List<ItemCart>) {
-        val quantity = cart.sumBy { it.quantity }
-        mainToolbar.tcTxtCartCount.isVisible = quantity > 0
-        mainToolbar.tcTxtCartCount.text = quantity.toString()
+        mQtdItensCart = cart.sumBy { it.quantity }
+        mainToolbar.tcTxtCartCount.isVisible = mQtdItensCart > 0
+        mainToolbar.tcTxtCartCount.text = mQtdItensCart.toString()
     }
 
     override fun onFailureLoadGames(message: String) {
@@ -76,14 +88,19 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         setSupportActionBar(mainToolbar as Toolbar)
         mainToolbar.tcTxtTitle.text = Html.fromHtml(getString(R.string.main_title))
 
-        val staggeredGridLayoutManager = StaggeredGridLayoutManager(2,
-            LinearLayoutManager.VERTICAL)
+        val staggeredGridLayoutManager = StaggeredGridLayoutManager(
+            2, LinearLayoutManager.VERTICAL)
 
         mainRecGames.layoutManager = staggeredGridLayoutManager
         mainRecGames.adapter = adapter
 
         adapter.setOnItemClickListener { game ->
             GameActivity.startGameActivity(this, game.id)
+        }
+
+        mainToolbar.tcImgCart.setOnClickListener{
+            if(mQtdItensCart > 0)
+                CartActivity.startGameActivity(this)
         }
     }
 }

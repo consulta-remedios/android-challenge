@@ -15,5 +15,5 @@
     <color name="colorActionBarIcon">#757575</color>
     <color name="colorBackgroundApp">#F2F2F2</color>
     <color name="colorCartAccent">#24CB64</color>
-
+    <color name="colorIndicatorImageSlider">#DEDEDE</color>
 </resources>
