@@ -16,4 +16,6 @@
     <color name="colorBackgroundApp">#F2F2F2</color>
     <color name="colorCartAccent">#24CB64</color>
     <color name="colorIndicatorImageSlider">#DEDEDE</color>
+    <color name="colorBackgroundItemCart">#F9F9F9</color>
+    <color name="colorTitleCart">#999999</color>
 </resources>

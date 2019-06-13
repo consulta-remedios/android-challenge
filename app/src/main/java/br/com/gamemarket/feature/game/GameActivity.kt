@@ -18,7 +18,6 @@ import br.com.gamemarket.base.extensions.toCurrency
 import br.com.gamemarket.data.model.Game
 import br.com.gamemarket.data.model.ItemCart
 import br.com.gamemarket.feature.cart.CartActivity
-import com.daimajia.slider.library.Indicators.PagerIndicator
 import com.daimajia.slider.library.SliderLayout
 import com.daimajia.slider.library.SliderTypes.BaseSliderView
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView

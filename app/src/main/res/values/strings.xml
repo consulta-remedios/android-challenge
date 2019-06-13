@@ -14,5 +14,13 @@
     <string name="label_read_less">Ler Menos</string>
     <string name="label_frete">Frete:</string>
     <string name="bt_add_cart">Adicionar ao Carrinho</string>
+    <string name="bt_end_shopping">FINALIZAR COMPRA</string>
     <string name="value_frete">R$ 10,00</string>
+    <string name="label_qtd">Quantidade:</string>
+    <string name="label_address_delivery">Endereço de Entrega</string>
+    <string name="label_delivery">Frete</string>
+    <string name="label_edit">Editar</string>
+    <string name="label_mail">Correios:</string>
+    <string name="label_payment">Pagamento</string>
+    <string name="label_continue_buing">Continuar Comprando</string>
 </resources>
