@@ -12,18 +12,15 @@
         app:behavior_peekHeight="80dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-
     <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/gameTxtPrice"
             tools:text="R$ 100,00"
-            android:textColor="@color/colorAccent"
+            style="@style/PriceStyleLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -54,8 +51,8 @@
             app:layout_constraintStart_toEndOf="@+id/tvLabelFrete"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAddCart"
-            android:background="@drawable/bottom_cart_background"
+            android:id="@+id/tvEndBuing"
+            android:background="@drawable/buttom_cart_background"
             android:textColor="@color/colorPrimary"
             android:text="@string/bt_add_cart"
             android:paddingTop="10dp"

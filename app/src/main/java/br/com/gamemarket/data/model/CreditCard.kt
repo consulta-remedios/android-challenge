@@ -4,11 +4,11 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ItemCart(
+data class CreditCard (
     val id: Long,
     val name: String,
-    val price: Double,
-    val platform: String,
-    val image: String,
-    var quantity: Int
+    val number:String,
+    val flag: Double,
+    val expirationDate: Int,
+    val code: String
 ): Parcelable
