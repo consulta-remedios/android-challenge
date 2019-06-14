@@ -8,7 +8,6 @@ import br.com.gamemarket.base.di.repositoryModule
 import br.com.gamemarket.base.di.retrofitClientModule
 import org.koin.android.ext.android.startKoin
 
-@Suppress("unused")
 class App : Application() {
 
     private val modules = listOf(

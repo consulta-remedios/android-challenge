@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackgroundItemCart">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/igImgCover"
+            android:layout_width="0dp"
+            android:layout_height="110dp"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/igTxtPlatform"
+            style="@style/PlatformStyleLabel"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            tools:text="PS4"
+            app:layout_constraintStart_toEndOf="@+id/igImgCover"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/igTxtName"
+            style="@style/NameStyleLabel"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            tools:text="Super Mario"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/igTxtPlatform"
+            app:layout_constraintStart_toEndOf="@+id/igImgCover"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/igTxtPrice"
+            style="@style/PriceStyleLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            tools:text="R$ 10,00" android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/igTxtName" app:layout_constraintStart_toEndOf="@+id/igImgCover"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/buttom_cart_increment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="17dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/igImgCover"
+            app:layout_constraintTop_toBottomOf="@+id/igTxtPrice"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:textColor="@color/colorText"
+                android:text="@string/label_qtd" android:id="@+id/appCompatTextView"
+                android:layout_marginStart="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBaseline_toBaselineOf="@+id/gameQtd"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/gameQtd"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:gravity="center"
+                android:textSize="14sp"
+                tools:text="2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/appCompatTextView" android:layout_marginStart="4dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgIncrement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_indicator_right" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="14dp"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View android:id="@+id/lineTop"
+          android:layout_height="1dp"
+          android:background="@color/separator"
+          android:layout_width="0dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/cartToolbar"
+          app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

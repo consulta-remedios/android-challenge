@@ -9,7 +9,6 @@ import br.com.gamemarket.feature.main.MainContract
 import br.com.gamemarket.feature.main.MainPresenter
 import com.consultaremedios.base.extensions.mockito
 import com.nhaarman.mockitokotlin2.inOrder
-import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.Dispatchers
 import org.junit.Before
@@ -56,7 +55,7 @@ class MainPresenterTest {
         inOrder(view) {
             verify(view).showLoadingGames()
             verify(view).hideLoadingGames()
-            verify(view).onFailuereLoadGames(anyString())
+            verify(view).onFailureLoadGames(anyString())
         }
     }
 
@@ -65,18 +64,5 @@ class MainPresenterTest {
         presenter.loadCart()
 
         verify(view).onChangeCartSize(anyList())
-    }
-
-    @Test
-    fun `test add item then refresh cart count`() {
-        presenter.addItemCard(mock())
-        verify(view).onChangeCartSize(anyList())
-    }
-
-    @Test
-    fun `test remove item then refresh cart count`() {
-        presenter.addItemCard(mock())
-        verify(view).onChangeCartSize(anyList())
-
     }
 }

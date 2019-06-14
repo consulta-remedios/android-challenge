@@ -39,4 +39,57 @@
         <item name="android:background">@color/separator</item>
     </style>
 
+    <style name="PlatformStyleLabel">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="NameStyleLabel">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+
+    <style name="PriceStyleLabel">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="TitleSectionCart">
+        <item name="android:textColor">@color/colorTitleCart</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ActionSectionCart">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ContentSectionCart">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ContentSectionCartDetails">
+        <item name="android:textColor">@color/colorTitleCart</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="BackToMain">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

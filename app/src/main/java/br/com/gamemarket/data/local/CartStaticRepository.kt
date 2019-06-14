@@ -1,5 +1,7 @@
 package br.com.gamemarket.data.local
 
+import br.com.gamemarket.base.extensions.getItemIfExists
+import br.com.gamemarket.base.extensions.toItemCart
 import br.com.gamemarket.data.model.Game
 import br.com.gamemarket.data.model.ItemCart
 import br.com.gamemarket.data.model.ServiceResponse
@@ -25,6 +27,16 @@ class CartStaticRepository : CartRepository {
         return ServiceResponse.OK
     }
 
+    override suspend fun remove(game: Game): ServiceResponse<*> {
+        return try {
+            val itemCard = cart.getItemIfExists(game.id)
+            cart.remove(itemCard)
+            ServiceResponse.OK
+        } catch (e: Exception) {
+            ServiceResponse.ERROR(e.localizedMessage)
+        }
+    }
+
     override suspend fun removeItem(id: Long): ServiceResponse<*> {
         return try {
             val itemCard = cart.getItemIfExists(id)
@@ -34,7 +46,7 @@ class CartStaticRepository : CartRepository {
 
             ServiceResponse.OK
         } catch (e: Exception) {
-            ServiceResponse.ERROR("")
+            ServiceResponse.ERROR(e.localizedMessage)
         }
     }
 
@@ -44,22 +56,6 @@ class CartStaticRepository : CartRepository {
 
     override suspend fun removeAll(): ServiceResponse<*> {
         cart.clear()
-
         return ServiceResponse.OK
     }
-
-    private fun List<ItemCart>.getItemIfExists(id: Long): ItemCart? {
-        return this.firstOrNull { it.id == id }
-    }
-}
-
-private fun Game.toItemCart(): ItemCart {
-    return ItemCart(
-        id,
-        name,
-        price,
-        platform,
-        image,
-        1
-    )
 }

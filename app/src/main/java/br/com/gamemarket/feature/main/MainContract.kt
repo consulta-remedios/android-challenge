@@ -10,14 +10,12 @@ interface MainContract {
         fun showLoadingGames()
         fun hideLoadingGames()
         fun onSuccessfulLoadGames(games: List<Game>)
-        fun onFailuereLoadGames(message: String)
+        fun onFailureLoadGames(message: String)
         fun onChangeCartSize(cart: List<ItemCart>)
     }
 
     interface Presenter : BasePresenter<View> {
         fun loadGames()
         fun loadCart()
-        fun addItemCard(item: Game)
-        fun removeItemCard(item: Game)
     }
 }

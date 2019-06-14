@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.gamemarket.R
 import br.com.gamemarket.base.extensions.loadImage
+import br.com.gamemarket.base.extensions.toCurrency
 import br.com.gamemarket.data.model.Game
 import kotlinx.android.synthetic.main.item_game.view.*
 
-class GameAdapter : RecyclerView.Adapter<GameAdapter.Holder>() {
+class MainAdapter : RecyclerView.Adapter<MainAdapter.Holder>() {
 
     var data: List<Game> = emptyList()
         set(value) {
@@ -17,8 +18,6 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.Holder>() {
             notifyDataSetChanged()
         }
 
-    private var onMinusListener: (item:Game) -> Unit = {}
-    private var onPlusListener: (item:Game) -> Unit = {}
     private var onItemListener: (item:Game) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -37,14 +36,6 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.Holder>() {
         holder.render(data[position])
     }
 
-    fun setOnMinusClickListener(listener:(item:Game) -> Unit) {
-        onMinusListener = listener
-    }
-
-    fun setOnPlusClickListener(listener:(item:Game) -> Unit) {
-        onPlusListener = listener
-    }
-
     fun setOnItemClickListener(listener:(item:Game) -> Unit) {
         onItemListener = listener
     }
@@ -52,14 +43,6 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.Holder>() {
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-            itemView.igBtnMinus.setOnClickListener {
-                onMinusListener(data[adapterPosition])
-            }
-
-            itemView.igBtnPlus.setOnClickListener {
-                onPlusListener(data[adapterPosition])
-            }
-
             itemView.setOnClickListener {
                 onItemListener(data[adapterPosition])
             }
@@ -67,7 +50,10 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.Holder>() {
 
         fun render(item: Game) {
             itemView.igImgCover.loadImage(item.image)
+
+            itemView.igTxtPlatform.text = item.platform
             itemView.igTxtTitle.text = item.name
+            itemView.igTxtPrice.text = item.price.toCurrency()
         }
     }
 }

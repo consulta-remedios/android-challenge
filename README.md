@@ -1,38 +1,36 @@
-## Consulta Remedios Mobile Challenge
+## O que você fez de interessante?
 
-O teste consiste em construir uma aplicação nativa android de um pseudo ecommerce de games.
+- Implementação de listagem dos itens do carrinho,  com swipe para exclusão de item
 
-### Recursos
-- Siga o layout: [Layout Android](https://xd.adobe.com/spec/08671ee9-a138-4eda-4ac3-58128100283a-7e56/)
-- Documentação da api no arquivo [docs/api.md](docs/api.md)
-- Imagens disponiveis na pasta [images/assets-android](images/assets-android/)
+- Preparei o desenvolvimento da funcionalidade para editar as quantidades diretamente no carrinho de compras
 
-### Escopo
-- Faça um fork deste repositório e faça as alterações no projeto já iniciado
-- A lista de jogos deve ser carregada automaticamente ao entrar no aplicativo, jogos devem vir da API
-- Ao clicar em algum item da lista, ir para tela de detalhes
-- O carrinho de compra deve exibir todos os itens adicionados.
-- Cada produto adicionado no carrinho, soma R$:10,00 ao frete do produto
-- O frete é grátis para compras acima de R$:250,00
+## Arquitetura que usou?
 
-### O que iremos avaliar...
-- Funcionamento do aplicativo(ele não pode quebrar)
-- Como você trabalhou em um projeto que já esta em andamento, se manteve a arquitetura, as melhorias propostas e como implementou novas funcionalidades
-- Layout(Usabilidade e se fez conforme escopo)
-- O Código(Domínio da linguagem, estrutura, uso de boas práticas, Legibilidade e Lint)
-- Uso do git e github(iremos olhar os commits; branches; pull request. Recomendado uso do gitflow)
+- MVP
 
-### Diferencias
-- Rotinas de teste
+## Lista de bibliotecas que usou:
 
-### Como aplicar
-Faça um pull request para este repositório com o código a ser avaliado
+Usei uma biblioteca para fazer o album de fotos da tela de detalhe de game, ela exigia algumas outras:
 
-##### Recomendações
-* Crie um código escalável
-* Siga a arquitetura proposta, a menos que traga um ganho considerável
-* Versione como se estivesse trabalhando em equipe
-* Descreva em um `README.md` o que você fez de interessante, a arquitetura que usou, lista de bibliotecas que usou e as dificuldades encontradas no desenvolvimento da aplicação(Se não consegui terminar em tempo hábil, aproveite este espaço para fazer um checklist do que está faltando)
-* Preze pela qualidade, se faltar tempo para terminar o teste, faça uma lista de pendências
+- `com.squareup.picasso:picasso:$v.picasso` 
+    - a ferramente de algum que utilizei precisava do picasso, por isso que tem ela e o glide
+- `com.nineoldandroids:library:$v.nineo`
+- `com.daimajia.slider:library:$v.slider`
 
-Estou aguardando o teu pull request, boa sorte!
+# Dificuldades encontradas
+
+- Encontrar as pegadinhas que colocaram
+- Implementar as funcionalidades usando o MVC, prefiro o MVVM :D
+- Tentar entregar o máximo no tempo que me propus
+
+# Lista de pendências
+
+- Inserir pesquisa
+- Inserir banco local para salvar o carrinho, os endereços e cartões
+- Editar informações no carrinho
+- Usar o livedata para as adapters
+- usar databinding
+- Criar os testes para a tela de Carrinho de Compra
+
+> OBS: Eu posso ter errado em algumas medidas do layout, 
+> isso por que meu celular é pequeno e meu PC não tava dando para sustentar o emulador aberto 

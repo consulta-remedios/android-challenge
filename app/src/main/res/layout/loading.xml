@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/colorTranslucidOverlay"
+    android:background="@color/colorBackgroundApp"
     android:clickable="true"
     android:focusable="true"
     tools:ignore="Overdraw">

@@ -1,13 +1,34 @@
 <resources>
     <string name="app_name">GameMarket</string>
 
-    <string name="main_title">Games</string>
+    <string name="main_title">
+        <![CDATA[<font color=#2F7CF6>Games</font><font color=#333333>.</font>]]>
+    </string>
     <string name="game_title">Game</string>
 
     <string name="main_button_add_game">Adicionar Item</string>
     <string name="main_button_remove_game">Remover Item</string>
     <string name="main_button_go_to_next_page">Abrir segunda tela</string>
 
-    <string name="item_game_minus">-</string>
-    <string name="item_game_plus">+</string>
+    <string name="label_read_more">Ler Mais</string>
+    <string name="label_read_less">Ler Menos</string>
+    <string name="label_frete">Frete:</string>
+    <string name="bt_add_cart">Adicionar ao Carrinho</string>
+    <string name="bt_end_shopping">FINALIZAR COMPRA</string>
+    <string name="value_frete">R$ 10,00</string>
+    <string name="label_qtd">Quantidade:</string>
+    <string name="label_address_shipping">Endereço de Entrega</string>
+    <string name="label_shipping">Frete</string>
+    <string name="label_edit">Editar</string>
+    <string name="label_mail">Correios:</string>
+    <string name="label_payment">Pagamento</string>
+    <string name="label_continue_buing">Continuar Comprando</string>
+    <string name="title_cart_activity">Carrinho de compras</string>
+    <string name="title_end_activity">Compra Concluída</string>
+    <string name="label_free_shipping">FRETE GRÁTIS</string>
+    <string name="label_final_message">AHOOOY!!</string>
+    <string name="label_info_purchase">
+        Sua compra Nº 00279 foi concluída com sucesso.\nEm breve você receberá seus produtos.
+    </string>
+    <string name="message_empty_cart">Você removeu todos os itens do corrinho.</string>
 </resources>

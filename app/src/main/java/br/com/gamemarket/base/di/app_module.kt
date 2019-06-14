@@ -1,5 +1,7 @@
 package br.com.gamemarket.base.di
 
+import br.com.gamemarket.feature.cart.CartContract
+import br.com.gamemarket.feature.cart.CartPresenter
 import br.com.gamemarket.feature.game.GameContract
 import br.com.gamemarket.feature.game.GamePresenter
 import br.com.gamemarket.feature.main.MainContract
@@ -17,7 +19,7 @@ val appModule = module {
             view = view,
             gameRepository = get(),
             localRepository = get(),
-            dispacherContext = get()
+            dispatcherContext = get()
         )
     } bind MainContract.Presenter::class
 
@@ -25,9 +27,18 @@ val appModule = module {
         GamePresenter(
             view = view,
             gameRepository = get(),
-            dispacherContext = get()
+            localRepository = get(),
+            dispatcherContext = get()
         )
     } bind GameContract.Presenter::class
+
+    factory { (view: CartContract.View) ->
+        CartPresenter(
+            view = view,
+            localRepository = get(),
+            dispatcherContext = get()
+        )
+    } bind CartContract.Presenter::class
 }
 
 val featureModule = module {
