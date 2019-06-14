@@ -7,16 +7,14 @@ import br.com.gamemarket.data.model.ItemCart
 
 interface CartContract {
     interface View : BaseView<Presenter> {
-        fun showLoadingGames()
-        fun hideLoadingGames()
-        fun onSuccessfulLoadGame()
         fun onChangeCartSize(cart: List<ItemCart>)
     }
 
     interface Presenter : BasePresenter<View> {
         fun loadGames()
-        fun increaseQuantityGames()
-        fun decreaseQuantityGames()
+        fun increaseQuantityGames(game: Game)
+        fun decreaseQuantityGames(game: Game)
         fun removeItemCard(item: Game)
+        fun removeAll()
     }
 }

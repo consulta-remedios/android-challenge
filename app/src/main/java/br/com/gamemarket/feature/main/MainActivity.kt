@@ -1,5 +1,7 @@
 package br.com.gamemarket.feature.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Html
 import android.view.MenuItem
@@ -26,6 +28,14 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     private var mGames: List<Game> = emptyList()
     private var mQtdItensCart: Int = 0
+
+    companion object {
+
+        fun startGameActivity(context: Context) {
+            val intent = Intent(context, MainActivity::class.java)
+            context.startActivity(intent)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

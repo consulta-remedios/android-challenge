@@ -17,11 +17,18 @@
     <string name="bt_end_shopping">FINALIZAR COMPRA</string>
     <string name="value_frete">R$ 10,00</string>
     <string name="label_qtd">Quantidade:</string>
-    <string name="label_address_delivery">Endereço de Entrega</string>
-    <string name="label_delivery">Frete</string>
+    <string name="label_address_shipping">Endereço de Entrega</string>
+    <string name="label_shipping">Frete</string>
     <string name="label_edit">Editar</string>
     <string name="label_mail">Correios:</string>
     <string name="label_payment">Pagamento</string>
     <string name="label_continue_buing">Continuar Comprando</string>
     <string name="title_cart_activity">Carrinho de compras</string>
+    <string name="title_end_activity">Compra Concluída</string>
+    <string name="label_free_shipping">FRETE GRÁTIS</string>
+    <string name="label_final_message">AHOOOY!!</string>
+    <string name="label_info_purchase">
+        Sua compra Nº 00279 foi concluída com sucesso.\nEm breve você receberá seus produtos.
+    </string>
+    <string name="message_empty_cart">Você removeu todos os itens do corrinho.</string>
 </resources>

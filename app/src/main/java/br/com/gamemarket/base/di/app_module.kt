@@ -35,7 +35,6 @@ val appModule = module {
     factory { (view: CartContract.View) ->
         CartPresenter(
             view = view,
-            gameRepository = get(),
             localRepository = get(),
             dispatcherContext = get()
         )

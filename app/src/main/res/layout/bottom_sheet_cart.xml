@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/bsContainerGame"
+        android:id="@+id/bsContainerCard"
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"
         android:layout_height="90dp"
@@ -26,7 +26,7 @@
             android:layout_marginBottom="10dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/tvAddCart"
+            android:id="@+id/tvEndBuing"
             android:backgroundTint="@color/colorCartAccent"
             android:textColor="@color/colorPrimary"
             android:text="@string/bt_end_shopping"
@@ -45,18 +45,16 @@
     <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvContinueBuing"
             android:text="@string/label_continue_buing"
-            android:textColor="@color/colorAccent"
+            style="@style/BackToMain"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textStyle="bold"
             android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="9dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvAddCart"
+            app:layout_constraintTop_toBottomOf="@+id/tvEndBuing"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"/>
 

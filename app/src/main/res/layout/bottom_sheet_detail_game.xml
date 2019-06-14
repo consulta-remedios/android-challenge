@@ -51,7 +51,7 @@
             app:layout_constraintStart_toEndOf="@+id/tvLabelFrete"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAddCart"
+            android:id="@+id/tvEndBuing"
             android:background="@drawable/buttom_cart_background"
             android:textColor="@color/colorPrimary"
             android:text="@string/bt_add_cart"

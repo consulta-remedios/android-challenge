@@ -6,15 +6,10 @@ import android.os.Bundle
 import android.text.Html
 import android.text.method.ScrollingMovementMethod
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import br.com.gamemarket.R
-import br.com.gamemarket.base.extensions.checkLengthListImages
-import br.com.gamemarket.base.extensions.extra
-import br.com.gamemarket.base.extensions.isVisible
-import br.com.gamemarket.base.extensions.toCurrency
+import br.com.gamemarket.base.extensions.*
 import br.com.gamemarket.data.model.Game
 import br.com.gamemarket.data.model.ItemCart
 import br.com.gamemarket.feature.cart.CartActivity
@@ -84,7 +79,7 @@ class GameActivity : AppCompatActivity(), GameContract.View, BaseSliderView.Imag
             }
         }
 
-        tvAddCart.setOnClickListener{
+        tvEndBuing.setOnClickListener{
             onAddUnityItemCart()
         }
     }
@@ -111,9 +106,6 @@ class GameActivity : AppCompatActivity(), GameContract.View, BaseSliderView.Imag
         gameToolbar.tcTxtTitle.text = game.platform.toUpperCase()
         gameToolbar.tcTxtTitle.setTextColor(resources.getColor(R.color.colorAccent))
 
-        bsContainerGame.visibility = View.VISIBLE
-        shadow.visibility = View.VISIBLE
-
         gameTxtName.text = game.name
         gameTxtDescription.text = game.description
         gameTxtPrice.text = game.price.toCurrency()
@@ -121,7 +113,7 @@ class GameActivity : AppCompatActivity(), GameContract.View, BaseSliderView.Imag
     }
 
     override fun onUnsuccessfulLoadGame(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        showToast(message)
         finish()
     }
 
@@ -137,6 +129,8 @@ class GameActivity : AppCompatActivity(), GameContract.View, BaseSliderView.Imag
 
     override fun hideLoadingGames() {
         gameViewLoading.isVisible = false
+        bsContainerGame.isVisible = true
+        shadow.isVisible = true
     }
 
     private fun hideDescriptionText() {
@@ -151,16 +145,9 @@ class GameActivity : AppCompatActivity(), GameContract.View, BaseSliderView.Imag
         gameTxtDescription.movementMethod = ScrollingMovementMethod()
     }
 
-    private fun onRemoveUnityItemCart(item: Game) {
-        presenter.removeItemCard(item)
-        Toast.makeText(this, "O jogo ${mGame.name} foi removido do carrinho",
-            Toast.LENGTH_SHORT).show()
-    }
-
     private fun onAddUnityItemCart() {
         presenter.addItemCard(mGame)
-        Toast.makeText(this, "O jogo ${mGame.name} foi adicionado no carrinho",
-            Toast.LENGTH_SHORT).show()
+        showToast("O jogo ${mGame.name} foi adicionado no carrinho")
     }
 
     override fun onStart(target: BaseSliderView?) {
