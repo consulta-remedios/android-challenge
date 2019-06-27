@@ -10,4 +10,6 @@
 
     <string name="item_game_minus">-</string>
     <string name="item_game_plus">+</string>
+
+    <string name="item_game_price">R$ %1$s</string>
 </resources>

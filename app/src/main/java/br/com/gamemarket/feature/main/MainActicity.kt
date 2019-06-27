@@ -5,7 +5,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.gamemarket.R
 import br.com.gamemarket.base.extensions.isVisible
 import br.com.gamemarket.base.extensions.showToast
