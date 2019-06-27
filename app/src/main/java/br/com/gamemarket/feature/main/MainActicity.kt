@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import br.com.gamemarket.R
 import br.com.gamemarket.base.extensions.isVisible
 import br.com.gamemarket.base.extensions.showToast
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mainToolbar.tcTxtTitle.setText(R.string.main_title)
 
-        mainRecGames.layoutManager = LinearLayoutManager(this)
+        mainRecGames.layoutManager = GridLayoutManager(this, 2)
         mainRecGames.adapter = adapter
 
         adapter.setOnMinusClickListener {

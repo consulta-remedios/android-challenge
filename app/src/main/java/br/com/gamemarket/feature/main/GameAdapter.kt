@@ -52,13 +52,13 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.Holder>() {
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-            itemView.igBtnMinus.setOnClickListener {
-                onMinusListener(data[adapterPosition])
-            }
-
-            itemView.igBtnPlus.setOnClickListener {
-                onPlusListener(data[adapterPosition])
-            }
+//            itemView.igBtnMinus.setOnClickListener {
+//                onMinusListener(data[adapterPosition])
+//            }
+//
+//            itemView.igBtnPlus.setOnClickListener {
+//                onPlusListener(data[adapterPosition])
+//            }
 
             itemView.setOnClickListener {
                 onItemListener(data[adapterPosition])
@@ -68,6 +68,8 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.Holder>() {
         fun render(item: Game) {
             itemView.igImgCover.loadImage(item.image)
             itemView.igTxtTitle.text = item.name
+            itemView.igTxtConsole.text = item.platform
+            itemView.igTxtPrice.text = itemView.context.getString(R.string.item_game_price, item.price.toString())
         }
     }
 }
