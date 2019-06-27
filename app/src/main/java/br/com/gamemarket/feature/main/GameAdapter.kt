@@ -52,13 +52,13 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.Holder>() {
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-            itemView.igBtnMinus.setOnClickListener {
-                onMinusListener(data[adapterPosition])
-            }
-
-            itemView.igBtnPlus.setOnClickListener {
-                onPlusListener(data[adapterPosition])
-            }
+//            itemView.igBtnMinus.setOnClickListener {
+//                onMinusListener(data[adapterPosition])
+//            }
+//
+//            itemView.igBtnPlus.setOnClickListener {
+//                onPlusListener(data[adapterPosition])
+//            }
 
             itemView.setOnClickListener {
                 onItemListener(data[adapterPosition])
