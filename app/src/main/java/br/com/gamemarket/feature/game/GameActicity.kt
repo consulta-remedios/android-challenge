@@ -2,7 +2,6 @@ package br.com.gamemarket.feature.game
 
 import android.content.Context
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -11,13 +10,10 @@ import br.com.gamemarket.R
 import br.com.gamemarket.base.extensions.extra
 import br.com.gamemarket.base.extensions.isVisible
 import br.com.gamemarket.base.extensions.loadImage
-import br.com.gamemarket.base.extensions.toCurrency
 import br.com.gamemarket.data.model.Game
 import br.com.gamemarket.data.model.ItemCart
 import kotlinx.android.synthetic.main.activity_game.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.card_bottom.view.*
-import kotlinx.android.synthetic.main.item_game.*
 import kotlinx.android.synthetic.main.toolbar_cart.view.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -57,6 +53,11 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         setSupportActionBar(gameToolbar as Toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         gameToolbar.tcTxtTitle.setText(R.string.game_title)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
     }
 
     override fun onSuccessfulLoadGame(game: Game) {

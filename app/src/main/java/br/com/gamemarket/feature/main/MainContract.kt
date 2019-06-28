@@ -17,7 +17,5 @@ interface MainContract {
     interface Presenter : BasePresenter<View> {
         fun loadGames()
         fun loadCart()
-//        fun addItemCard(item: Game)
-//        fun removeItemCard(item: Game)
     }
 }
