@@ -1,15 +1,17 @@
 package br.com.gamemarket.feature.game
 
 import br.com.gamemarket.base.extensions.launch
+import br.com.gamemarket.data.local.CartRepository
 import br.com.gamemarket.data.model.Game
+import br.com.gamemarket.data.model.dto.GameDto
 import br.com.gamemarket.data.model.whenever
 import br.com.gamemarket.data.remote.gamecheckout.GameRepository
-import br.com.ideliver.model.GameDto
 import kotlinx.coroutines.CoroutineDispatcher
 
 class GamePresenter(
     override var view: GameContract.View,
     private val gameRepository: GameRepository,
+    private val localRepository: CartRepository,
     private val dispacherContext: CoroutineDispatcher
 ) : GameContract.Presenter {
 
@@ -20,7 +22,7 @@ class GamePresenter(
             gameRepository.getGame(gameId).whenever(
                 isBody = { gameDto ->
                     view.hideLoadingGames()
-                    view.onSuccessfulLoadGame(gameDto.toMockGame())
+                    view.onSuccessfulLoadGame(gameDto.toGame())
                 },
                 isError = {
                     view.hideLoadingGames()
@@ -30,17 +32,45 @@ class GamePresenter(
         }
     }
 
-    // TODO implements
-    private fun GameDto.toMockGame() : Game {
+    override fun loadCart() {
+        dispacherContext.launch {
+            refreshCartItemCount()
+        }
+    }
+
+    override fun addItemCard(item: Game) {
+        dispacherContext.launch {
+            localRepository.addItem(item)
+            refreshCartItemCount()
+        }
+    }
+
+    override fun removeItemCard(item: Game) {
+        dispacherContext.launch {
+            localRepository.removeItem(item)
+            refreshCartItemCount()
+        }
+    }
+
+    private suspend fun refreshCartItemCount() {
+        localRepository.getCart().whenever(
+            isBody = { cart ->
+                view.onChangeCartSize(cart)
+            }
+        )
+    }
+
+
+    private fun GameDto.toGame() : Game {
         return Game(
             id,
-            "Super Mario Odyssey",
-            "Lorem ipsum dolor sit amet, Super Mario Odyssey, consectetur adipiscing elit",
-            100.0,
-            1,
-            "ps4",
-            "https://raw.githubusercontent.com/ConsultaRemedios/frontend-challenge/master/assets/super-mario-odyssey.png",
-            emptyList()
+            name,
+            description,
+            price,
+            score,
+            platform,
+            image,
+            images
         )
     }
 }

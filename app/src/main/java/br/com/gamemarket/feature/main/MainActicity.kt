@@ -67,30 +67,14 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     private fun setupViews() {
         setSupportActionBar(mainToolbar as Toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
         mainToolbar.tcTxtTitle.setText(R.string.main_title)
 
         mainRecGames.layoutManager = GridLayoutManager(this, 2)
         mainRecGames.adapter = adapter
 
-        adapter.setOnMinusClickListener {
-            onRemoveUnityItemCart(it)
-        }
-
-        adapter.setOnPlusClickListener {
-            onAddUnityItemCart(it)
-        }
-
         adapter.setOnItemClickListener { game ->
             GameActivity.startGameActivity(this, game.id)
         }
-    }
-
-    private fun onRemoveUnityItemCart(item: Game) {
-        presenter.removeItemCard(item)
-    }
-
-    private fun onAddUnityItemCart(item: Game) {
-        presenter.addItemCard(item)
     }
 }
