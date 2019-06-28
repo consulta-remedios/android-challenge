@@ -22,14 +22,14 @@
                 android:layout_marginEnd="16dp"/>
 
         <View
+                android:id="@+id/cardLine"
                 style="@style/Separator"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" android:id="@+id/view"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintHorizontal_bias="1.0" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/igImgCover"
-        />
+                app:layout_constraintTop_toBottomOf="@+id/igImgCover"/>
 
         <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/igTxtConsole"
@@ -40,7 +40,7 @@
                 android:padding="4dp"
                 android:textSize="@dimen/app_font_size"
                 android:textColor="@color/colorAccent"
-                app:layout_constraintTop_toBottomOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/cardLine"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="4dp"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="4dp"
                 android:layout_marginTop="8dp"/>
@@ -58,10 +58,10 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 android:padding="4dp"
                 app:layout_constraintTop_toBottomOf="@+id/igTxtConsole" android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/igTxtPrice"/>
+                android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/gamePrice"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/igTxtPrice"
+                android:id="@+id/gamePrice"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -74,5 +74,6 @@
                 android:layout_marginStart="4dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="4dp" app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="8dp" android:layout_marginTop="8dp"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

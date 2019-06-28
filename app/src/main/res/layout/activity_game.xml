@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.game.GameActivity">
+    tools:context=".feature.game.GameActivity"
+    android:background="@android:color/white">
 
     <include
         android:id="@+id/gameToolbar"
@@ -15,49 +16,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/gameTxtName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="@dimen/activity_vertical_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gameToolbar"
-        tools:text="Super Metroid" />
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/detailImgCover"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/gameToolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="90dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="90dp" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/gameTxtDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="@dimen/activity_vertical_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gameTxtName"
-        tools:text="Jogo bom" />
+    <View
+            android:id="@+id/detailLine"
+            style="@style/Separator"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="36dp"
+            app:layout_constraintTop_toBottomOf="@+id/detailImgCover"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/gameTxtPrice"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="@dimen/activity_vertical_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gameTxtDescription"
-        tools:text="R$: 123,11" />
 
     <include
-        android:id="@+id/gameViewLoading"
-        layout="@layout/loading"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gameToolbar"
-        tools:visibility="gone" />
+            android:id="@+id/gameViewLoading"
+            layout="@layout/loading"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gameToolbar"
+            tools:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/gameBottomView"/>
+
+    <include
+            android:id="@+id/gameBottomView"
+            layout="@layout/card_bottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.gamemarket.R
 import br.com.gamemarket.base.extensions.loadImage
+import br.com.gamemarket.base.extensions.toCurrency
 import br.com.gamemarket.data.model.Game
 import kotlinx.android.synthetic.main.item_game.view.*
 
@@ -69,7 +70,7 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.Holder>() {
             itemView.igImgCover.loadImage(item.image)
             itemView.igTxtTitle.text = item.name
             itemView.igTxtConsole.text = item.platform
-            itemView.igTxtPrice.text = itemView.context.getString(R.string.item_game_price, item.price.toString())
+            itemView.gamePrice.text = itemView.context.getString(R.string.item_game_price, item.price.toString())
         }
     }
 }

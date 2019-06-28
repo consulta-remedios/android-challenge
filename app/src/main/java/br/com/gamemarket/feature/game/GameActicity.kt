@@ -8,9 +8,12 @@ import androidx.appcompat.widget.Toolbar
 import br.com.gamemarket.R
 import br.com.gamemarket.base.extensions.extra
 import br.com.gamemarket.base.extensions.isVisible
+import br.com.gamemarket.base.extensions.loadImage
 import br.com.gamemarket.base.extensions.toCurrency
 import br.com.gamemarket.data.model.Game
 import kotlinx.android.synthetic.main.activity_game.*
+import kotlinx.android.synthetic.main.card_bottom.view.*
+import kotlinx.android.synthetic.main.item_game.*
 import kotlinx.android.synthetic.main.toolbar_cart.view.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -47,11 +50,13 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     }
 
     override fun onSuccessfulLoadGame(game: Game) {
-        gameToolbar.tcTxtTitle.text = game.platform
+        gameToolbar.tcTxtTitle.text = game.platform.toUpperCase()
 
-        gameTxtName.text = game.name
-        gameTxtDescription.text = game.description
-        gameTxtPrice.text = game.price.toCurrency()
+//        gameTxtName.text = game.name
+        gameBottomView.gamePrice.text = getString(R.string.item_game_price, game.price.toString())
+        detailImgCover.loadImage(game.image)
+//        gameTxtDescription.text = game.description
+//        gameTxtPrice.text = game.price.toCurrency()
     }
 
     override fun showLoadingGames() {
