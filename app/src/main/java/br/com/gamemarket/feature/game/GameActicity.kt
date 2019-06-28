@@ -2,7 +2,9 @@ package br.com.gamemarket.feature.game
 
 import android.content.Context
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import br.com.gamemarket.R
@@ -11,7 +13,9 @@ import br.com.gamemarket.base.extensions.isVisible
 import br.com.gamemarket.base.extensions.loadImage
 import br.com.gamemarket.base.extensions.toCurrency
 import br.com.gamemarket.data.model.Game
+import br.com.gamemarket.data.model.ItemCart
 import kotlinx.android.synthetic.main.activity_game.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.card_bottom.view.*
 import kotlinx.android.synthetic.main.item_game.*
 import kotlinx.android.synthetic.main.toolbar_cart.view.*
@@ -43,6 +47,12 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         presenter.loadGames(gameId)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        presenter.loadCart()
+    }
+
     private fun setupViews() {
         setSupportActionBar(gameToolbar as Toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -52,11 +62,24 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     override fun onSuccessfulLoadGame(game: Game) {
         gameToolbar.tcTxtTitle.text = game.platform.toUpperCase()
 
-//        gameTxtName.text = game.name
         gameBottomView.gamePrice.text = getString(R.string.item_game_price, game.price.toString())
         detailImgCover.loadImage(game.image)
-//        gameTxtDescription.text = game.description
-//        gameTxtPrice.text = game.price.toCurrency()
+        detailGameTitle.text = game.name
+        detailGameDescription.text = game.description
+
+        detailReadMore.setOnClickListener {
+            detailGameDescription.maxLines = 30
+            detailReadMore.visibility = View.GONE
+        }
+
+        gameBottomView.gameAddToCart.setOnClickListener {
+            onAddUnityItemCart(game)
+        }
+
+        detailReadMore.visibility = View.VISIBLE
+        gameBottomView.gamePrice.visibility = View.VISIBLE
+        gameBottomView.gameFreightPrice.visibility = View.VISIBLE
+        gameBottomView.gameFreightTitle.visibility = View.VISIBLE
     }
 
     override fun showLoadingGames() {
@@ -65,6 +88,20 @@ class GameActivity : AppCompatActivity(), GameContract.View {
 
     override fun hideLoadingGames() {
         gameViewLoading.isVisible = false
+    }
+
+    override fun onChangeCartSize(cart: List<ItemCart>) {
+        val quantity = cart.sumBy { it.quantity }
+        gameToolbar.tcTxtCartCount.isVisible = quantity > 0
+        gameToolbar.tcTxtCartCount.text = quantity.toString()
+    }
+
+    private fun onRemoveUnityItemCart(item: Game) {
+        presenter.removeItemCard(item)
+    }
+
+    private fun onAddUnityItemCart(item: Game) {
+        presenter.addItemCard(item)
     }
 
 }

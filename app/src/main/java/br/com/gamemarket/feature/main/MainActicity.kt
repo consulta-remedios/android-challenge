@@ -11,6 +11,7 @@ import br.com.gamemarket.base.extensions.showToast
 import br.com.gamemarket.data.model.Game
 import br.com.gamemarket.data.model.ItemCart
 import br.com.gamemarket.feature.game.GameActivity
+import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_cart.view.*
 import org.koin.android.ext.android.inject
@@ -73,24 +74,24 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         mainRecGames.layoutManager = GridLayoutManager(this, 2)
         mainRecGames.adapter = adapter
 
-        adapter.setOnMinusClickListener {
-            onRemoveUnityItemCart(it)
-        }
-
-        adapter.setOnPlusClickListener {
-            onAddUnityItemCart(it)
-        }
+//        adapter.setOnMinusClickListener {
+//            onRemoveUnityItemCart(it)
+//        }
+//
+//        adapter.setOnPlusClickListener {
+//            onAddUnityItemCart(it)
+//        }
 
         adapter.setOnItemClickListener { game ->
             GameActivity.startGameActivity(this, game.id)
         }
     }
 
-    private fun onRemoveUnityItemCart(item: Game) {
-        presenter.removeItemCard(item)
-    }
-
-    private fun onAddUnityItemCart(item: Game) {
-        presenter.addItemCard(item)
-    }
+//    private fun onRemoveUnityItemCart(item: Game) {
+//        presenter.removeItemCard(item)
+//    }
+//
+//    private fun onAddUnityItemCart(item: Game) {
+//        presenter.addItemCard(item)
+//    }
 }
