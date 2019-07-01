@@ -13,7 +13,7 @@ import br.com.gamemarket.base.extensions.loadImage
 import br.com.gamemarket.data.model.Game
 import br.com.gamemarket.data.model.ItemCart
 import kotlinx.android.synthetic.main.activity_game.*
-import kotlinx.android.synthetic.main.card_bottom.view.*
+import kotlinx.android.synthetic.main.game_card_bottom.view.*
 import kotlinx.android.synthetic.main.toolbar_cart.view.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf

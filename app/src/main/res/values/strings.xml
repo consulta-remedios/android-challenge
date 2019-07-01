@@ -16,4 +16,6 @@
     <string name="add_to_cart">Adicionar ao Carrinho</string>
     <string name="freight_label">Frete:</string>
     <string name="read_more">Ler mais</string>
+    <string name="finish_purchase">Finalizar Compra</string>
+    <string name="continue_purchase">Continuar Comprando</string>
 </resources>

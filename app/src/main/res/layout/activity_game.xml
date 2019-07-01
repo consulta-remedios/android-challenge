@@ -107,7 +107,7 @@
 
     <include
             android:id="@+id/gameBottomView"
-            layout="@layout/card_bottom"
+            layout="@layout/game_card_bottom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
