@@ -15,5 +15,6 @@
     <color name="colorBadge">#f50f3f</color>
     <color name="colorActionBarIcon">#757575</color>
 
-
+    <color name="customerFieldsTitle">#999999</color>
+    <color name="customerFields">#333333</color>
 </resources>
