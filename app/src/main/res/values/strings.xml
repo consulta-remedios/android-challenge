@@ -11,7 +11,7 @@
     <string name="item_game_minus">-</string>
     <string name="item_game_plus">+</string>
 
-    <string name="item_game_price">R$ %1$s</string>
+    <string name="item_price">R$ %1$s</string>
     <string name="freight_price">R$ 10,00</string>
     <string name="add_to_cart">Adicionar ao Carrinho</string>
     <string name="freight_label">Frete:</string>
@@ -27,4 +27,6 @@
     <string name="card_number">5678 **** **** 4536</string>
     <string name="card_type">Visa</string>
     <string name="toolbar_cart_title">Carrinho de Compras</string>
+    <string name="free_label">Grátis</string>
+    <string name="purchase_success_text">AHOOOY!!</string>
 </resources>

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import br.com.gamemarket.R
 import br.com.gamemarket.base.extensions.loadImage
 import br.com.gamemarket.data.model.ItemCart
@@ -38,7 +39,10 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.Holder>() {
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        private var spinnerArray = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
         init {
+
             itemView.setOnClickListener {
                 onItemListener(data[adapterPosition])
             }
@@ -49,6 +53,8 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.Holder>() {
             itemView.cartConsoleName.text = item.platform
             itemView.cartGameName.text = item.name
             itemView.cartGamePrice.text = item.price.toString()
+            itemView.cartGameAmount.adapter = ArrayAdapter(itemView.context, android.R.layout.simple_spinner_item, spinnerArray)
+            itemView.cartGameAmount.setSelection(item.quantity - 1)
         }
     }
 }

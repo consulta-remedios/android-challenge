@@ -67,7 +67,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     override fun onSuccessfulLoadGame(game: Game) {
         gameToolbar.tcTxtTitle.text = game.platform.toUpperCase()
 
-        gameBottomView.gamePrice.text = getString(R.string.item_game_price, game.price.toString())
+        gameBottomView.gamePrice.text = getString(R.string.item_price, game.price.toString())
         detailImgCover.loadImage(game.image)
         detailGameTitle.text = game.name
         detailGameDescription.text = game.description

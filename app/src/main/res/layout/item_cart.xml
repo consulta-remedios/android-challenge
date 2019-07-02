@@ -13,8 +13,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/cartImgCover"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="136dp"
+                android:layout_height="136dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
@@ -69,6 +69,7 @@
 
         <Spinner
                 android:id="@+id/cartGameAmount"
+                android:tooltipText="Quantidade: "
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"

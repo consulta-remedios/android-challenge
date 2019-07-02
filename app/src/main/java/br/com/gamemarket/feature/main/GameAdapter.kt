@@ -69,7 +69,7 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.Holder>() {
             itemView.igImgCover.loadImage(item.image)
             itemView.igTxtTitle.text = item.name
             itemView.igTxtConsole.text = item.platform
-            itemView.gamePrice.text = itemView.context.getString(R.string.item_game_price, item.price.toString())
+            itemView.gamePrice.text = itemView.context.getString(R.string.item_price, item.price.toString())
         }
     }
 }
