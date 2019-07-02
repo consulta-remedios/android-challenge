@@ -12,6 +12,7 @@ import br.com.gamemarket.base.extensions.isVisible
 import br.com.gamemarket.base.extensions.loadImage
 import br.com.gamemarket.data.model.Game
 import br.com.gamemarket.data.model.ItemCart
+import br.com.gamemarket.feature.cart.CartActivity
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.game_card_bottom.view.*
 import kotlinx.android.synthetic.main.toolbar_cart.view.*
@@ -53,6 +54,9 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         setSupportActionBar(gameToolbar as Toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         gameToolbar.tcTxtTitle.setText(R.string.game_title)
+        gameToolbar.tcImgCart.setOnClickListener {
+            CartActivity.startCartActivity(this)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

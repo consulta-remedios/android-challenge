@@ -17,4 +17,5 @@
 
     <color name="customerFieldsTitle">#999999</color>
     <color name="customerFields">#333333</color>
+    <color name="item_cart_card">#F9F9F9</color>
 </resources>

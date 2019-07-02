@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.gamemarket.R
 import br.com.gamemarket.base.extensions.loadImage
-import br.com.gamemarket.base.extensions.toCurrency
 import br.com.gamemarket.data.model.Game
 import kotlinx.android.synthetic.main.item_game.view.*
 

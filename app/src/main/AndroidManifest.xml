@@ -25,6 +25,9 @@
         <activity
             android:name=".feature.game.GameActivity"
             android:screenOrientation="portrait" />
+        <activity
+                android:name=".feature.cart.CartActivity"
+                android:screenOrientation="portrait" />
     </application>
 
 </manifest>

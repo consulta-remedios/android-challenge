@@ -26,4 +26,5 @@
     <string name="payment_title">Pagamento</string>
     <string name="card_number">5678 **** **** 4536</string>
     <string name="card_type">Visa</string>
+    <string name="toolbar_cart_title">Carrinho de Compras</string>
 </resources>

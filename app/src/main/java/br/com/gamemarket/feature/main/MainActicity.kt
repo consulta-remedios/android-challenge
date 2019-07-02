@@ -1,6 +1,7 @@
 package br.com.gamemarket.feature.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -10,6 +11,7 @@ import br.com.gamemarket.base.extensions.isVisible
 import br.com.gamemarket.base.extensions.showToast
 import br.com.gamemarket.data.model.Game
 import br.com.gamemarket.data.model.ItemCart
+import br.com.gamemarket.feature.cart.CartActivity
 import br.com.gamemarket.feature.game.GameActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_cart.view.*
@@ -69,6 +71,9 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         setSupportActionBar(mainToolbar as Toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         mainToolbar.tcTxtTitle.setText(R.string.main_title)
+        mainToolbar.tcImgCart.setOnClickListener {
+            CartActivity.startCartActivity(this)
+        }
 
         mainRecGames.layoutManager = GridLayoutManager(this, 2)
         mainRecGames.adapter = adapter
