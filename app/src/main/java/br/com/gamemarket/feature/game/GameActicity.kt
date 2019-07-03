@@ -10,10 +10,12 @@ import br.com.gamemarket.R
 import br.com.gamemarket.base.extensions.extra
 import br.com.gamemarket.base.extensions.isVisible
 import br.com.gamemarket.base.extensions.loadImage
+import br.com.gamemarket.base.extensions.showToast
 import br.com.gamemarket.data.model.Game
 import br.com.gamemarket.data.model.ItemCart
+import br.com.gamemarket.feature.cart.CartActivity
 import kotlinx.android.synthetic.main.activity_game.*
-import kotlinx.android.synthetic.main.card_bottom.view.*
+import kotlinx.android.synthetic.main.game_card_bottom.view.*
 import kotlinx.android.synthetic.main.toolbar_cart.view.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -53,6 +55,9 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         setSupportActionBar(gameToolbar as Toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         gameToolbar.tcTxtTitle.setText(R.string.game_title)
+        gameToolbar.tcImgCart.setOnClickListener {
+            CartActivity.startCartActivity(this)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -63,7 +68,7 @@ class GameActivity : AppCompatActivity(), GameContract.View {
     override fun onSuccessfulLoadGame(game: Game) {
         gameToolbar.tcTxtTitle.text = game.platform.toUpperCase()
 
-        gameBottomView.gamePrice.text = getString(R.string.item_game_price, game.price.toString())
+        gameBottomView.gamePrice.text = getString(R.string.item_price, game.price.toString())
         detailImgCover.loadImage(game.image)
         detailGameTitle.text = game.name
         detailGameDescription.text = game.description
@@ -97,8 +102,8 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         gameToolbar.tcTxtCartCount.text = quantity.toString()
     }
 
-    private fun onRemoveUnityItemCart(item: Game) {
-        presenter.removeItemCard(item)
+    override fun onFailuereLoadGames(message: String) {
+        showToast(message)
     }
 
     private fun onAddUnityItemCart(item: Game) {

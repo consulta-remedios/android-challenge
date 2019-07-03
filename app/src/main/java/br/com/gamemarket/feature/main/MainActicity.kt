@@ -1,5 +1,7 @@
 package br.com.gamemarket.feature.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +12,7 @@ import br.com.gamemarket.base.extensions.isVisible
 import br.com.gamemarket.base.extensions.showToast
 import br.com.gamemarket.data.model.Game
 import br.com.gamemarket.data.model.ItemCart
+import br.com.gamemarket.feature.cart.CartActivity
 import br.com.gamemarket.feature.game.GameActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_cart.view.*
@@ -20,6 +23,14 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     override val presenter by inject<MainContract.Presenter> { parametersOf(this) }
 
     private val adapter by lazy { GameAdapter() }
+
+    companion object {
+        fun startMainActivity(context: Context) {
+            val intent = Intent(context, MainActivity::class.java)
+            context.startActivity(intent)
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +80,9 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         setSupportActionBar(mainToolbar as Toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         mainToolbar.tcTxtTitle.setText(R.string.main_title)
+        mainToolbar.tcImgCart.setOnClickListener {
+            CartActivity.startCartActivity(this)
+        }
 
         mainRecGames.layoutManager = GridLayoutManager(this, 2)
         mainRecGames.adapter = adapter

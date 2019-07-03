@@ -12,6 +12,10 @@ class CartStaticRepository : CartRepository {
         return ServiceResponse.BODY(cart)
     }
 
+    override suspend fun getCartItem(id: Long): ServiceResponse<ItemCart?> {
+        return ServiceResponse.BODY(cart.getItemIfExists(id))
+    }
+
     override suspend fun addItem(game: Game): ServiceResponse<*> {
 
         val itemCard = cart.getItemIfExists(game.id)

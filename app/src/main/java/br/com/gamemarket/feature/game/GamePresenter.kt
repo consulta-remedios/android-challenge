@@ -20,13 +20,13 @@ class GamePresenter(
 
         dispacherContext.launch {
             gameRepository.getGame(gameId).whenever(
-                isBody = { gameDto ->
+                isBody = {
                     view.hideLoadingGames()
-                    view.onSuccessfulLoadGame(gameDto.toGame())
+                    view.onSuccessfulLoadGame(it.toGame())
                 },
-                isError = {
+                isError = {msg ->
                     view.hideLoadingGames()
-                    // TODO implements
+                    view.onFailuereLoadGames(msg)
                 }
             )
         }
@@ -39,6 +39,26 @@ class GamePresenter(
     }
 
     override fun addItemCard(item: Game) {
+        dispacherContext.launch {
+            localRepository.getCartItem(item.id).whenever(
+                isBody = {
+                    if (it != null) {
+                        if (it.quantity >= 10) {
+                            view.onFailuereLoadGames("Apenas possível adicionar 10 itens iguais por vez")
+                        }
+                        else {
+                            addItem(item)
+                        }
+                    }
+                    else {
+                        addItem(item)
+                    }
+                }
+            )
+        }
+    }
+
+    private fun addItem(item: Game) {
         dispacherContext.launch {
             localRepository.addItem(item)
             refreshCartItemCount()
