@@ -38,20 +38,6 @@ class MainPresenter(
         }
     }
 
-    override fun addItemCard(item: Game) {
-        dispacherContext.launch {
-            localRepository.addItem(item)
-            refreshCartItemCount()
-        }
-    }
-
-    override fun removeItemCard(item: Game) {
-        dispacherContext.launch {
-            localRepository.removeItem(item)
-            refreshCartItemCount()
-        }
-    }
-
     private suspend fun refreshCartItemCount() {
         localRepository.getCart().whenever(
             isBody = { cart ->

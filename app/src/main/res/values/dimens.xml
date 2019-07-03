@@ -8,7 +8,10 @@
     <dimen name="normal_margin">16dp</dimen>
 
     <dimen name="app_font_size">14sp</dimen>
+    <dimen name="size_text_game_title">16sp</dimen>
     <dimen name="size_text_title_actionbar">20sp</dimen>
+
+    <dimen name="size_big_title_game">24sp</dimen>
 
     <dimen name="badge_text_size">8dp</dimen>
     <dimen name="badge_margin_top">12dp</dimen>

@@ -1,9 +1,10 @@
 package br.com.gamemarket.data.remote.gamecheckout
 
+import br.com.gamemarket.data.model.dto.GameDto
 import br.com.gamemarket.data.model.dto.SimpleGameDto
-import br.com.ideliver.model.GameDto
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface GameApi {
@@ -12,4 +13,7 @@ interface GameApi {
 
     @GET("/game/{id}")
     fun getGame(@Path("id") id: Long): Call<GameDto>
+
+    @POST("checkout")
+    fun finishPurchase(): Call<Unit>
 }

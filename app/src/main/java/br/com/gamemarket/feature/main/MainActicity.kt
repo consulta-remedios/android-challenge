@@ -1,15 +1,18 @@
 package br.com.gamemarket.feature.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import br.com.gamemarket.R
 import br.com.gamemarket.base.extensions.isVisible
 import br.com.gamemarket.base.extensions.showToast
 import br.com.gamemarket.data.model.Game
 import br.com.gamemarket.data.model.ItemCart
+import br.com.gamemarket.feature.cart.CartActivity
 import br.com.gamemarket.feature.game.GameActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_cart.view.*
@@ -20,6 +23,14 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     override val presenter by inject<MainContract.Presenter> { parametersOf(this) }
 
     private val adapter by lazy { GameAdapter() }
+
+    companion object {
+        fun startMainActivity(context: Context) {
+            val intent = Intent(context, MainActivity::class.java)
+            context.startActivity(intent)
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,30 +78,17 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     private fun setupViews() {
         setSupportActionBar(mainToolbar as Toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
         mainToolbar.tcTxtTitle.setText(R.string.main_title)
+        mainToolbar.tcImgCart.setOnClickListener {
+            CartActivity.startCartActivity(this)
+        }
 
-        mainRecGames.layoutManager = LinearLayoutManager(this)
+        mainRecGames.layoutManager = GridLayoutManager(this, 2)
         mainRecGames.adapter = adapter
-
-        adapter.setOnMinusClickListener {
-            onRemoveUnityItemCart(it)
-        }
-
-        adapter.setOnPlusClickListener {
-            onAddUnityItemCart(it)
-        }
 
         adapter.setOnItemClickListener { game ->
             GameActivity.startGameActivity(this, game.id)
         }
-    }
-
-    private fun onRemoveUnityItemCart(item: Game) {
-        presenter.removeItemCard(item)
-    }
-
-    private fun onAddUnityItemCart(item: Game) {
-        presenter.addItemCard(item)
     }
 }

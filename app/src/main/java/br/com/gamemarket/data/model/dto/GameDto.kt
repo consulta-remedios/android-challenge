@@ -1,6 +1,12 @@
-package br.com.ideliver.model
+package br.com.gamemarket.data.model.dto
 
-// TODO implement
 data class GameDto(
-    val id: Long
+    val id: Long,
+    val name: String,
+    val description:String,
+    val price: Double,
+    val score: Int,
+    val platform: String,
+    val image: String,
+    val images: List<String>
 )
