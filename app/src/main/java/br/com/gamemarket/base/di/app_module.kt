@@ -36,6 +36,7 @@ val appModule = module {
         CartPresenter(
             view = view,
             localRepository =  get(),
+            gameRepository = get(),
             dispatcherContext = get()
         )
     } bind CartContract.Presenter::class

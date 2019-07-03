@@ -3,6 +3,7 @@
 
     <string name="main_title">Games</string>
     <string name="game_title">Game</string>
+    <string name="purchase_title">Compra Concluída</string>
 
     <string name="main_button_add_game">Adicionar Item</string>
     <string name="main_button_remove_game">Remover Item</string>
@@ -29,4 +30,7 @@
     <string name="toolbar_cart_title">Carrinho de Compras</string>
     <string name="free_label">Grátis</string>
     <string name="purchase_success_text">AHOOOY!!</string>
+    <string name="purchase_message">Sua compra Nº 00001 foi concluída com sucesso. Em breve você receberá seus
+        produtos.
+    </string>
 </resources>

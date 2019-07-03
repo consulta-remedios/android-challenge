@@ -8,9 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.gamemarket.R
+import br.com.gamemarket.base.extensions.showToast
 import br.com.gamemarket.data.model.ItemCart
 import br.com.gamemarket.feature.main.MainActivity
+import br.com.gamemarket.feature.purchase.PurchaseActivity
 import kotlinx.android.synthetic.main.activity_cart.*
+import kotlinx.android.synthetic.main.cart_card_bottom.*
 import kotlinx.android.synthetic.main.cart_card_bottom.view.*
 import kotlinx.android.synthetic.main.customer_info.view.*
 import kotlinx.android.synthetic.main.toolbar_cart.view.*
@@ -38,13 +41,17 @@ class CartActivity: AppCompatActivity(), CartContract.View {
         presenter.loadCart()
     }
 
-    override fun onSuccessfulLoadGame(items: List<ItemCart>, presenter: CartPresenter) {
+    override fun onSuccessfulLoadGame(items: List<ItemCart>) {
         adapter.data = items
         setPrices(items)
     }
 
-    override fun onPurchase(cart: List<ItemCart>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onFailuereLoadGames(msg: String) {
+        showToast(msg)
+    }
+
+    override fun onFinishPurchase() {
+        PurchaseActivity.startPurchaseActivity(this)
     }
 
     override fun onChangeCartSize() {
@@ -62,8 +69,17 @@ class CartActivity: AppCompatActivity(), CartContract.View {
             MainActivity.startMainActivity(this)
         }
 
+        finishPurchase.setOnClickListener {
+            onPurchase()
+        }
+
+
         cartList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         cartList.adapter = adapter
+    }
+
+    private fun onPurchase() {
+        presenter.purchaseItems()
     }
 
     override fun onSupportNavigateUp(): Boolean {
