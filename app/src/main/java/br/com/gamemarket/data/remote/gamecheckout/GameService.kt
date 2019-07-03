@@ -7,11 +7,14 @@ import br.com.gamemarket.data.model.dto.SimpleGameDto
 import kotlinx.coroutines.delay
 
 class GameService(private val api: GameApi) : GameRepository {
+    override suspend fun finishPurchase(): ServiceResponse<*> {
+        return api.finishPurchase().awaitResult()
+    }
+
     override suspend fun getGames(): ServiceResponse<List<SimpleGameDto>> {
         return api.getGames().awaitResult()
     }
 
-    // mock service
     override suspend fun getGame(gameId: Long): ServiceResponse<GameDto> {
         delay(2200)
 

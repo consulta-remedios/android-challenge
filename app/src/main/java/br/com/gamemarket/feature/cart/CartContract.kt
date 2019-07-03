@@ -6,12 +6,15 @@ import br.com.gamemarket.data.model.ItemCart
 
 interface CartContract {
     interface View : BaseView<Presenter> {
-        fun onSuccessfulLoadGame(items: List<ItemCart>, presenter: CartPresenter)
-        fun onPurchase(cart: List<ItemCart>)
+        fun onSuccessfulLoadGame(items: List<ItemCart>)
+        fun onFinishPurchase()
         fun onChangeCartSize()
+        fun onFailuereLoadGames(msg: String)
     }
 
     interface Presenter : BasePresenter<View> {
         fun loadCart()
+        fun purchaseItems()
+        fun cleanCart()
     }
 }
