@@ -38,7 +38,7 @@ class CartActivity: AppCompatActivity(), CartContract.View {
         presenter.loadCart()
     }
 
-    override fun onSuccessfulLoadGame(items: List<ItemCart>) {
+    override fun onSuccessfulLoadGame(items: List<ItemCart>, presenter: CartPresenter) {
         adapter.data = items
         setPrices(items)
     }
@@ -47,7 +47,8 @@ class CartActivity: AppCompatActivity(), CartContract.View {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onChangeCartSize(cart: List<ItemCart>) {
+    override fun onChangeCartSize() {
+        presenter.loadCart()
       }
 
     private fun setupViews() {
@@ -73,7 +74,8 @@ class CartActivity: AppCompatActivity(), CartContract.View {
     private fun setPrices(items: List<ItemCart>) {
         var totalPrice = 0.0
         items.map { itemCart -> totalPrice += (itemCart.price * itemCart.quantity) }
-        cartBottomView.cartPrice.text = getString(R.string.item_price, totalPrice.toString())
+        val totalPriceFormatter:Double = Math.round(totalPrice * 1000.0) / 1000.0
+        cartBottomView.cartPrice.text = getString(R.string.item_price, totalPriceFormatter.toString())
         if (totalPrice < 250) {
             var totalAmount = 0
             items.map { itemCart -> totalAmount = (itemCart.quantity + totalAmount) }

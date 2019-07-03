@@ -17,8 +17,6 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.Holder>() {
             notifyDataSetChanged()
         }
 
-    private var onMinusListener: (item:Game) -> Unit = {}
-    private var onPlusListener: (item:Game) -> Unit = {}
     private var onItemListener: (item:Game) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -37,14 +35,6 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.Holder>() {
         holder.render(data[position])
     }
 
-    fun setOnMinusClickListener(listener:(item:Game) -> Unit) {
-        onMinusListener = listener
-    }
-
-    fun setOnPlusClickListener(listener:(item:Game) -> Unit) {
-        onPlusListener = listener
-    }
-
     fun setOnItemClickListener(listener:(item:Game) -> Unit) {
         onItemListener = listener
     }
@@ -52,14 +42,6 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.Holder>() {
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-//            itemView.igBtnMinus.setOnClickListener {
-//                onMinusListener(data[adapterPosition])
-//            }
-//
-//            itemView.igBtnPlus.setOnClickListener {
-//                onPlusListener(data[adapterPosition])
-//            }
-
             itemView.setOnClickListener {
                 onItemListener(data[adapterPosition])
             }

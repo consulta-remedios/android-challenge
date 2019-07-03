@@ -11,6 +11,7 @@ interface GameContract {
         fun hideLoadingGames()
         fun onSuccessfulLoadGame(game: Game)
         fun onChangeCartSize(cart: List<ItemCart>)
+        fun onFailuereLoadGames(message: String)
     }
 
     interface Presenter : BasePresenter<View> {

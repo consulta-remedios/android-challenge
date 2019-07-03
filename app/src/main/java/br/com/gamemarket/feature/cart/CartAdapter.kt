@@ -42,7 +42,6 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.Holder>() {
         private var spinnerArray = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
         init {
-
             itemView.setOnClickListener {
                 onItemListener(data[adapterPosition])
             }
@@ -52,7 +51,7 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.Holder>() {
             itemView.cartImgCover.loadImage(item.image)
             itemView.cartConsoleName.text = item.platform
             itemView.cartGameName.text = item.name
-            itemView.cartGamePrice.text = item.price.toString()
+            itemView.cartGamePrice.text = itemView.context.getString(R.string.item_price, item.price.toString())
             itemView.cartGameAmount.adapter = ArrayAdapter(itemView.context, android.R.layout.simple_spinner_item, spinnerArray)
             itemView.cartGameAmount.setSelection(item.quantity - 1)
         }

@@ -10,6 +10,7 @@ import br.com.gamemarket.R
 import br.com.gamemarket.base.extensions.extra
 import br.com.gamemarket.base.extensions.isVisible
 import br.com.gamemarket.base.extensions.loadImage
+import br.com.gamemarket.base.extensions.showToast
 import br.com.gamemarket.data.model.Game
 import br.com.gamemarket.data.model.ItemCart
 import br.com.gamemarket.feature.cart.CartActivity
@@ -101,8 +102,8 @@ class GameActivity : AppCompatActivity(), GameContract.View {
         gameToolbar.tcTxtCartCount.text = quantity.toString()
     }
 
-    private fun onRemoveUnityItemCart(item: Game) {
-        presenter.removeItemCard(item)
+    override fun onFailuereLoadGames(message: String) {
+        showToast(message)
     }
 
     private fun onAddUnityItemCart(item: Game) {
